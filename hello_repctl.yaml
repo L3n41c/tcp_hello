@@ -1,0 +1,20 @@
+id: hello
+kind: ReplicationController
+apiVersion: v1beta1
+desiredState:
+  replicas: 2
+  replicaSelector:
+    name: hello
+  podTemplate:
+    desiredState:
+      manifest:
+        version: v1beta1
+        id: hello
+        containers:
+          - name: hello
+            image: l3n41c/tcp-hello
+            ports:
+              - name: hello-port
+                containerPort: 8000
+    labels:
+      name: hello

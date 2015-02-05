@@ -1,0 +1,7 @@
+apiVersion: v1beta1
+kind: Service
+id: hello
+containerPort: hello-port
+port: 4242
+selector:
+  name: hello
