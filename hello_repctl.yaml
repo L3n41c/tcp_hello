@@ -14,7 +14,7 @@ desiredState:
           - name: hello
             image: l3n41c/tcp-hello
             command:
-              - "Hello World!"
+              - "[Hello World!]"
             ports:
               - name: hello-port
                 containerPort: 8000
