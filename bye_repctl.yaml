@@ -1,0 +1,22 @@
+id: bye
+kind: ReplicationController
+apiVersion: v1beta1
+desiredState:
+  replicas: 2
+  replicaSelector:
+    name: bye
+  podTemplate:
+    desiredState:
+      manifest:
+        version: v1beta1
+        id: bye
+        containers:
+          - name: bye
+            image: l3n41c/tcp-hello
+            command:
+              - "[Good bye!]"
+            ports:
+              - name: bye-port
+                containerPort: 8000
+    labels:
+      name: bye
