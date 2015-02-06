@@ -15,7 +15,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
                 answer = "{}\nMessage sent by {}:{} to {}:\n{}\n".format(banner,
                                                                          self.client_address[0],
                                                                          self.client_address[1],
-                                                                         socket.gethostname(),
+                                                                         socket.gethostbyname(socket.gethostname()),
                                                                          str(self.data))
                 print(answer)
                 self.request.sendall(bytes(answer, 'UTF-8'))
@@ -23,7 +23,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
             self.request.close()
 
 if __name__ == "__main__":
-    if len(sys.argv) > 0:
+    if len(sys.argv) > 1:
         banner = sys.argv[1]
     HOST, PORT = '', 8000
     server = socketserver.TCPServer((HOST, PORT), MyTCPHandler)
